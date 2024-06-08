@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stanley A. Dalumpines</title>
+    <link rel="icon" type="image/x-icon" href="images/myLogo.png">
+    <!-- <link href="/src/output.css" rel="stylesheet"> -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> 
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class', /* 'class' or 'media', we use 'class' to enable dark mode manually */
+        }
+    </script>
+    <!-- Load theme on page load -->
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>   
+</head>
+<body>
+<!-- Hero Page -->
+<header id="home" class="bg-white dark:bg-gray-900">
+    <nav x-data="{ isOpen: false }" class="relative bg-white dark:bg-gray-900">
+        <div class="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-3xl font-semibold text-blue-600 lg:text-4xl">
+                    <img class="w-auto h-6 sm:h-7" src="images/myLogo.png" alt="">
+                </a>
+    
+                <!-- Mobile menu button -->
+                <div class="flex md:hidden">
+                    <button x-cloak @click="isOpen = !isOpen" type="button" class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400" aria-label="toggle menu">
+                        <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
+                        </svg>
+
+                        <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+    
+            <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+            <div x-cloak :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']" class="absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white dark:bg-gray-900 md:bg-transparent md:dark:bg-transparent md:mt-0 md:p-0 md:top-0 md:relative md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center">
+                <div class="flex flex-col md:flex-row md:mx-6">
+                    <a class="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#home">Home</a>
+                    <a class="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#mySkillsAndPortfolio">My Skills & Portfolio</a>
+                    <a class="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#contact">Contact</a>
+                </div>
+    
+                <div class="flex justify-center md:block">
+                    <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4
+            
+             11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    </button>          
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container px-6 py-16 mx-auto">
+        <div  data-aos="fade-right" class="items-center lg:flex">
+            <div class="w-full lg:w-1/2">
+                <div class="lg:max-w-lg">
+                    <h1 class="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
+                    Welcome to my portfolio,
+                    </h1>
+                    <h1 x-data="{
+                        startingAnimation: { opacity: 0, scale: 4 },
+                        endingAnimation: { opacity: 1, scale: 1, stagger: 0.07, duration: 1, ease: 'expo.out' },
+                        addCNDScript: true,
+                        animateText() {
+                            $el.classList.remove('invisible');
+                            gsap.fromTo($el.children, this.startingAnimation, this.endingAnimation);
+                        },
+                        splitCharactersIntoSpans(element) {
+                            text = element.innerHTML;
+                            modifiedHTML = [];
+                            for (var i = 0; i < text.length; i++) {
+                                attributes = '';
+                                if(text[i].trim()){ attributes = 'class=\'inline-block\''; }
+                                modifiedHTML.push('<span ' + attributes + '>' + text[i] + '</span>');
+                            }
+                            element.innerHTML = modifiedHTML.join('');
+                        },
+                        addScriptToHead(url) {
+                            script = document.createElement('script');
+                            script.src = url;
+                            document.head.appendChild(script);
+                        }
+                    }"
+                    x-init="
+                        splitCharactersIntoSpans($el);
+                        if(addCNDScript){
+                            addScriptToHead('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js');
+                        }
+                        gsapInterval = setInterval(function(){
+                            if(typeof gsap !== 'undefined'){
+                                animateText();
+                                clearInterval(gsapInterval);
+                            }
+                        }, 5);
+                    " class="invisible block text-3xl font-semibold text-blue-500 lg:text-4xl">I am Stanley A. Dalumpines!</h1>
+                    <p class="mt-3 text-gray-600 dark:text-gray-400">I am currently a 4th-year student pursuing a Bachelor of Science in Information Systems at Davao del Norte State College, and I am about to graduate in 2024.</p>
+                    <button class="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-blue-600 rounded-lg lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500"><a href="#contact">Contact Me</a></button>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2" data-aos="fade-left">
+                <img class="w-full h-full lg:max-w-3xl" src="images/hero-image.png" alt="Catalogue-pana.svg">
+            </div>
+        </div>
+    </div>
+</header>
+<!-- End of Hero Page -->
+<!-- My Skills -->
+<section id="mySkillsAndPortfolio" class="bg-white dark:bg-gray-900">
+    <div class="container px-6 py-10 mx-auto">
+        <h1 class="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white" data-aos="fade-up">My Skills & Portfolio</h1>
+
+        <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 lg:grid-cols-2">
+            <div  data-aos="fade-right" class="flex items-end overflow-hidden bg-cover rounded-lg h-96" style="background-image:url('images/tallStack.png')">
+                <div class="w-full px-8 py-4 overflow-hidden rounded-b-lg backdrop-blur-sm bg-white/60 dark:bg-gray-800/60">
+                    <h2 class="mt-4 text-xl font-semibold text-gray-800 capitalize dark:text-white">Tailwind css, Alphine js, Livewire php, Laravel php</h2>
+                    <p class="mt-2 text-lg tracking-wider text-blue-500 uppercase dark:text-blue-400 ">Web Development</p>
+                </div>
+            </div>
+
+            <div  data-aos="fade-left" class="flex items-end overflow-hidden bg-cover rounded-lg h-96" style="background-image: url('images/desktopSupport.jpg');">
+                <div class="w-full px-8 py-4 overflow-hidden rounded-b-lg backdrop-blur-sm bg-white/60 dark:bg-gray-800/60">
+                    <h2 class="mt-4 text-xl font-semibold text-gray-800 capitalize dark:text-white">Basic Computer Troubleshooting</h2>
+                    <p class="mt-2 text-lg tracking-wider text-blue-500 uppercase dark:text-blue-400 ">Desktop Support</p>
+                </div>
+            </div>
+
+            <div  data-aos="fade-right" class="flex items-end overflow-hidden bg-cover rounded-lg h-96" style="background-image:url('images/myCert.png')">
+                <div class="w-full px-8 py-4 overflow-hidden rounded-b-lg backdrop-blur-sm bg-white/60 dark:bg-gray-800/60">
+                    <h2 class="mt-4 text-xl font-semibold text-gray-800 capitalize dark:text-white">CISCO Certificate</h2>
+                    <p class="mt-2 text-lg tracking-wider text-blue-500 uppercase dark:text-blue-400 ">Cyber Security</p>
+                </div>
+            </div>
+
+            <div  data-aos="fade-left" class="flex items-end overflow-hidden bg-cover rounded-lg h-96" style="background-image:url('images/mySql.png')">
+                <div class="w-full px-8 py-4 overflow-hidden rounded-b-lg backdrop-blur-sm bg-white/60 dark:bg-gray-800/60">
+                    <h2 class="mt-4 text-xl font-semibold text-gray-800 capitalize dark:text-white">MYSQL</h2>
+                    <p class="mt-2 text-lg tracking-wider text-blue-500 uppercase dark:text-blue-400 ">Database</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End of My Skills -->
+<!-- Contact Me -->
+<section id="contact" class="bg-white dark:bg-gray-900">
+    <div class="container px-6 py-12 mx-auto">
+        <div  data-aos="fade-up" class="text-center">
+            <p class="font-medium text-blue-500 dark:text-blue-400">Contact me</p>
+
+            <h1 class="mt-2 text-2xl font-semibold text-gray-800 md:text-3xl dark:text-white">Get in touch</h1>
+
+            <p class="mt-3 text-gray-500 dark:text-gray-400">I am always here to chat.</p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-12 mt-10 md:grid-cols-2 lg:grid-cols-3">
+            <div  data-aos="fade-right" class="flex flex-col items-center justify-center text-center">
+                <span class="p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                    </svg>
+                </span>
+
+                <h2 class="mt-4 text-lg font-medium text-gray-800 dark:text-white">Email</h2>
+                <p class="mt-2 text-gray-500 dark:text-gray-400">I am here to help.</p>
+                <p class="mt-2 text-blue-500 dark:text-blue-400">stanley.dalumpines@gmail.com</p>
+            </div>
+
+            <div  data-aos="fade-up" class="flex flex-col items-center justify-center text-center">
+                <span class="p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                    </svg>
+                </span>
+                
+                <h2 class="mt-4 text-lg font-medium text-gray-800 dark:text-white">Office</h2>
+                <p class="mt-2 text-gray-500 dark:text-gray-400">Come say hello at my office HQ.</p>
+                <p class="mt-2 text-blue-500 dark:text-blue-400">Prk. 5 Señorita, Dapco, Panabo City, Davao del Norte, Philippines</p>
+            </div>
+
+            <div  data-aos="fade-left"class="flex flex-col items-center justify-center text-center">
+                <span class="p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                    </svg>
+                </span>
+                
+                <h2 class="mt-4 text-lg font-medium text-gray-800 dark:text-white">Phone</h2>
+                <p class="mt-2 text-gray-500 dark:text-gray-400">Mon-Fri from 8am to 5pm.</p>
+                <p class="mt-2 text-blue-500 dark:text-blue-400">0951-409-3271</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End of Contact Me -->
+<!-- Footer -->
+<footer  data-aos="fade-up" class="bg-white dark:bg-gray-900">
+    <div class="container px-6 py-8 mx-auto">
+        <div class="flex flex-col items-center text-center">
+            <a href="#">
+                <img class="w-auto h-7" src="images/myLogo.png" alt="">
+            </a>
+
+            <div class="flex flex-wrap justify-center mt-6 -mx-4">
+                <a href="#home" class="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400" aria-label="Reddit">Home</a>
+                
+                <a href="#mySkillsAndPortfolio" class="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400" aria-label="Reddit">My Skills & Portfolio</a>
+                
+                <a href="#contact" class="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400" aria-label="Reddit">Contact</a>
+            </div>
+
+        </div>
+
+        <hr class="my-6 border-gray-200 md:my-10 dark:border-gray-700" />
+
+        <div class="flex flex-col items-center sm:flex-row sm:justify-between">
+            <p class="text-sm text-gray-500 dark:text-gray-300">© Copyright 2024. All Rights Reserved.</p>
+
+            <div class="flex -mx-2">
+                <a target="_blank" href="https://www.facebook.com/stanleygamers" class="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400" aria-label="Facebook">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M2.00195 12.002C2.00312 16.9214 5.58036 21.1101 10.439 21.881V14.892H7.90195V12.002H10.442V9.80204C10.3284 8.75958 10.6845 7.72064 11.4136 6.96698C12.1427 6.21332 13.1693 5.82306 14.215 5.90204C14.9655 5.91417 15.7141 5.98101 16.455 6.10205V8.56104H15.191C14.7558 8.50405 14.3183 8.64777 14.0017 8.95171C13.6851 9.25566 13.5237 9.68693 13.563 10.124V12.002H16.334L15.891 14.893H13.563V21.881C18.8174 21.0506 22.502 16.2518 21.9475 10.9611C21.3929 5.67041 16.7932 1.73997 11.4808 2.01722C6.16831 2.29447 2.0028 6.68235 2.00195 12.002Z">
+                        </path>
+                    </svg>
+                </a>
+
+                <a target="_blank" href="https://github.com/Ol12323" class="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400" aria-label="Github">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.026 2C7.13295 1.99937 2.96183 5.54799 2.17842 10.3779C1.395 15.2079 4.23061 19.893 8.87302 21.439C9.37302 21.529 9.55202 21.222 9.55202 20.958C9.55202 20.721 9.54402 20.093 9.54102 19.258C6.76602 19.858 6.18002 17.92 6.18002 17.92C5.99733 17.317 5.60459 16.7993 5.07302 16.461C4.17302 15.842 5.14202 15.856 5.14202 15.856C5.78269 15.9438 6.34657 16.3235 6.66902 16.884C6.94195 17.3803 7.40177 17.747 7.94632 17.9026C8.49087 18.0583 9.07503 17.99 9.56902 17.713C9.61544 17.207 9.84055 16.7341 10.204 16.379C7.99002 16.128 5.66202 15.272 5.66202 11.449C5.64973 10.4602 6.01691 9.5043 6.68802 8.778C6.38437 7.91731 6.42013 6.97325 6.78802 6.138C6.78802 6.138 7.62502 5.869 9.53002 7.159C11.1639 6.71101 12.8882 6.71101 14.522 7.159C16.428 5.868 17.264 6.138 17.264 6.138C17.6336 6.97286 17.6694 7.91757 17.364 8.778C18.0376 9.50423 18.4045 10.4626 18.388 11.453C18.388 15.286 16.058 16.128 13.836 16.375C14.3153 16.8651 14.5612 17.5373 14.511 18.221C14.511 19.555 14.499 20.631 14.499 20.958C14.499 21.225 14.677 21.535 15.186 21.437C19.8265 19.8884 22.6591 15.203 21.874 10.3743C21.089 5.54565 16.9181 1.99888 12.026 2Z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End of Footer -->
+<script>
+    AOS.init();
+
+    var themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
+    var themeToggleLightIcon = document.getElementById("theme-toggle-light-icon");
+
+    // Change the icons inside the button based on previous settings
+    if (
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+        themeToggleLightIcon.classList.remove("hidden");
+    } else {
+        themeToggleDarkIcon.classList.remove("hidden");
+    }
+
+    var themeToggleBtn = document.getElementById("theme-toggle");
+
+    themeToggleBtn.addEventListener("click", function () {
+        // Toggle icons inside button
+        themeToggleDarkIcon.classList.toggle("hidden");
+        themeToggleLightIcon.classList.toggle("hidden");
+
+        // If set via local storage previously
+        if (localStorage.getItem("color-theme")) {
+            if (localStorage.getItem("color-theme") === "light") {
+                document.documentElement.classList.add("dark");
+                localStorage.setItem("color-theme", "dark");
+            } else {
+                document.documentElement.classList.remove("dark");
+                localStorage.setItem("color-theme", "light");
+            }
+
+        // If NOT set via local storage previously
+        } else {
+            if (document.documentElement.classList.contains("dark")) {
+                document.documentElement.classList.remove("dark");
+                localStorage.setItem("color-theme", "light");
+            } else {
+                document.documentElement.classList.add("dark");
+                localStorage.setItem("color-theme", "dark");
+            }
+        }
+    });
+</script>
+</body>
+</html>
